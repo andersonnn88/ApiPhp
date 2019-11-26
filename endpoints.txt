@@ -1,0 +1,21 @@
+users/login(POST)        = logar usuario
+users/new(POST)          = adcionar um novo usuário
+users/{id}(GET)          = informçãoes do usuário{id}
+users/{id}(PUT)          = editar usuário{id}
+users/{id}(DELETE)       = excluir usuário{id}
+users/{id}/feed (GET}    = feed de fotod do usuário{id}
+users/{id}/photos(GET)   = fotos do usuário{id}
+users/{id}/follow(POST)  = seguir usuário{id}
+users/{id}/unfollow(POST)= deseguir
+
+photos/random (GET)      = fotos aleatórias
+photos/new(POST)         = inserir nova foto
+photos/i{id}(get)        = informçãoes sobre a foto
+photos/{id}(DELETE)      = excluir as fotos 
+photos/{id}/comments(GET)= pegar comentários da foto{id}
+photos/{id}/comments(POST)= inserir comentários da foto{id}
+photos/{id}/likes(GET)   = pegar os likes da foto{id}
+photos/{id}/likes(POST)  = curti foto{id}
+photos/{id}/likes(DELETE)= descurtir foto{id}
+
+

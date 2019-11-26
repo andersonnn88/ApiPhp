@@ -1,0 +1,28 @@
+ Meu primeiro sistema no git
+ -- git status
+ -- git commit 
+ -- git log 
+ -- git add -A
+ -- git commit -m "comentario"
+ -- git commit -am "adiciona e alterar"
+
+ ------------------- reverter alteração
+  git branch - consulta qt vs
+
+  -- git reset
+  - hard - apaga tudo e volta o commiit
+  - soft - volta mais mantem alteração preparada
+  - mixed- volta antes do add
+  -------------------
+  trabalhando com diferentes branch
+- git branch
+- git branch nome
+- git checkout nome do outro branch
+-------------------------------------------
+saber a diferença entre arquivos
+- git diff
+- git diff --name-only
+- git diff nome do arquivo
+
+  623230df440da8476fe56457e0569ad9dfaf5dfd 
+
