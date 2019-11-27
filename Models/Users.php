@@ -15,7 +15,7 @@ class Users extends Model {
 			$sql = $this->db->prepare($sql);
 			$sql->bindValue(':name', $name);
 			$sql->bindValue(':email',$email);
-			$sql->bindValue(':pass', $pass);
+			$sql->bindValue(':pass', $hash);
 			$sql->execute();
 
 			$this->id_user = $this->db->lastInsertId();
@@ -38,8 +38,7 @@ class Users extends Model {
 			$info = $sql->fetch();
 
 			
-			//if(password_verify($pass, $info['pass'])){
-				if($pass == $info['pass']){
+			if(password_verify($pass, $info['pass'])){
 				$this->id_user = $info['id'];
 			
 
