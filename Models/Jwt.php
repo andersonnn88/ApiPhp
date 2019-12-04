@@ -23,7 +23,7 @@ class Jwt extends Model {
      }
 
      public function validate($token){
-        global $config;
+        global $config; 
         $array = array();
 
         $jwt_split = explode('.', $token);

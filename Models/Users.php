@@ -65,9 +65,48 @@ class Users extends Model {
 		return $array;
 	}
 
+	public function getId(){
+		return $this->id_user;
+	}
+	public function getInfo($id){
+		$array = array();
+		$sql = "SELECT id, name, email, avatar FROM users WHERE id = :id";
+		$sql = $this->db->prepare($sql);
+		$sql->bindValue(':id', $id);
+		$sql->execute();
+
+	
+		if($sql->rowCount() > 0){
+		
+			
+			$array = $sql->fetch(\PDO::FETCH_ASSOC);
+			
+			if(!empty($array['avatar'])){
+				$array['avatar'] = BASE_URL.'Media/avatar/'.$array['avatar'];
+			}else{
+				$array['avatar'] = BASE_URL.'Media/avatar/default.jpg';
+			}
+			
+		}
+		
+		return $array;
+	}
+
 	public function createJwt(){
 		$jwt = new Jwt();
 		return $jwt->create(array('id_user' => $this->id_user));
+	}
+
+	public function validadeJwt($token){
+		 $jwt = new Jwt();
+		 $info = $jwt->validate($token);
+
+		 if(isset($info->id_user)){
+			 $this->id_user = $info->id_user;
+			 return true;
+		 }else{
+			 return false;
+		 }
 	}
 
 	private function emailExists($email){

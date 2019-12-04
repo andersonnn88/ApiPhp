@@ -62,6 +62,42 @@ class UsersController extends Controller {
 		$this->returnJson($array);
 	}
 
+	public function view($id){
+		$array = array('error'=>'', 'logged'=>false);
+		$method = $this->getMethod();
+		$data = $this->getRequestData();
+
+		$users = new Users();
+
+		if(!empty($data['jwt']) && $users->validadeJwt($data['jwt'])){
+			$array['logged'] = true;
+			$array['is_me'] = false;
+
+			if($id == $users->getId()){
+				$array['is_me'] = true;	
+			}
+			switch($method){
+				case 'GET':
+					$array['data'] = $users->getInfo($id);
+					if(count($array['data']) === 0 ){
+						$array['error'] = 'Usuário não existe';
+					}
+					break;
+				case 'PUT':
+					break;
+				case 'DELETE':
+					break;
+				default:
+					$array['error'] = 'Método '.$method.' não disponível';
+					break;
+			}
+		}else{
+
+			$array['error'] = 'Acesso negado';
+		}
+		$this->returnJson($array);
+	}
+
 	
 
 }
